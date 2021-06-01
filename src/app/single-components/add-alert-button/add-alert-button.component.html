@@ -1,0 +1,17 @@
+<button
+  *ngIf="!notificationIsSet"
+  type="button"
+  class="btn btn-success"
+  (click)="addNotification()"
+>
+  Add Notification
+</button>
+
+<button
+  *ngIf="notificationIsSet"
+  type="button"
+  class="btn btn-danger"
+  (click)="removeNotification()"
+>
+  Remove Notification
+</button>
