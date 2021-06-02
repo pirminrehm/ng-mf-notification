@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '@ng-mf/shared';
 import {
   LocalStroageService,
   NotificationAlert,
@@ -10,7 +11,14 @@ import {
   styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent implements OnInit {
-  constructor(private backendService: LocalStroageService) {}
+  user;
+
+  constructor(
+    private backendService: LocalStroageService,
+    private sharedService: SharedService
+  ) {
+    this.user = this.sharedService.userName;
+  }
 
   notifications: NotificationAlert[] = [];
 
