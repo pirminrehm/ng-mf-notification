@@ -1,16 +1,18 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Location</th>
-      <th scope="col">Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let notification of notifications; index as i">
-      <th scope="row">{{ i }}</th>
-      <td>{{ notification.location }}</td>
-      <td>{{ notification.type }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="border border-5 border-primary p-5">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Location</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notification of notifications; index as i">
+        <th scope="row">{{ i }}</th>
+        <td>{{ notification.location }}</td>
+        <td>{{ notification.type }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
