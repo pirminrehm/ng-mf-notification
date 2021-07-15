@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SharedService } from '@ng-mf/shared';
 import {
   LocalStroageService,
@@ -9,6 +9,7 @@ import {
   selector: 'ntf-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class OverviewComponent implements OnInit {
   user;

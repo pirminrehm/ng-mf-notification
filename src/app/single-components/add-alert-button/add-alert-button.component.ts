@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { LocalStroageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'ntf-add-alert-button',
   templateUrl: './add-alert-button.component.html',
   styleUrls: ['./add-alert-button.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AddAlertButtonComponent implements OnInit {
   @Input()

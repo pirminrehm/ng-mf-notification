@@ -1,8 +1,15 @@
-<div class="border border-5 border-primary p-1">
+<div
+  class="
+    border border-2 border-blue-700
+    p-4
+    font-sans font-medium
+    text-white text-sm
+  "
+>
   <button
     *ngIf="!notificationIsSet"
     type="button"
-    class="btn btn-success"
+    class="py-2 px-4 shadow-sm rounded-md bg-green-700"
     (click)="addNotification()"
   >
     Add Notification
@@ -11,7 +18,7 @@
   <button
     *ngIf="notificationIsSet"
     type="button"
-    class="btn btn-danger"
+    class="py-2 px-4 shadow-sm rounded-md bg-red-700"
     (click)="removeNotification()"
   >
     Remove Notification
