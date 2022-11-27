@@ -1,11 +1,4 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const mf = require("@angular-architects/module-federation/webpack");
-const path = require("path");
-
-const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
-  /* mapped paths to share */
-]);
 
 module.exports = {
   output: {
@@ -15,32 +8,26 @@ module.exports = {
   optimization: {
     runtimeChunk: false,
   },
-  resolve: {
-    alias: {
-      ...sharedMappings.getAliases(),
-    },
+  experiments: {
+    outputModule: true,
   },
   plugins: [
     new ModuleFederationPlugin({
-      // For remotes (please adjust)
+      library: { type: "module" },
       name: "ngMfNotification",
       filename: "remoteEntry.js",
       exposes: {
         "./OverviewModule": "./src/app/overview/overview.module.ts",
-        "./AddAlertButtonComponent":
-          "./src/app/single-components/add-alert-button/add-alert-button.component.ts",
+        "./AddAlertButtonComponent": "./src/app/single-components/add-alert-button/add-alert-button.component.ts",
       },
 
       shared: {
-        "@angular/core": { singleton: true, strictVersion: true },
-        "@angular/common": { singleton: true, strictVersion: true },
-        "@angular/common/http": { singleton: true, strictVersion: true },
-        "@angular/router": { singleton: true, strictVersion: true },
-        "@ng-mf/shared": { singleton: true, strictVersion: true },
-
-        ...sharedMappings.getDescriptors(),
+        "@angular/core": { singleton: true, strictVersion: false, requiredVersion: "auto" },
+        "@angular/common": { singleton: true, strictVersion: false, requiredVersion: "auto" },
+        "@angular/common/http": { singleton: true, strictVersion: false, requiredVersion: "auto" },
+        "@angular/router": { singleton: true, strictVersion: false, requiredVersion: "auto" },
+        "@ng-mf/shared": { singleton: true, strictVersion: false, requiredVersion: "auto" },
       },
     }),
-    sharedMappings.getPlugin(),
   ],
 };

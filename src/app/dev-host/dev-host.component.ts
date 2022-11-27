@@ -31,7 +31,8 @@ export class DevHostComponent {
 
   async createComponent() {
     const remote = await loadRemoteModule({
-      remoteName: 'ngMfNotification',
+      type: 'module',
+      remoteEntry: 'http://localhost:5000/remoteEntry.js',
       exposedModule: './AddAlertButtonComponent',
     });
 
